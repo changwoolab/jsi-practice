@@ -9,6 +9,9 @@
 #import <memory>
 
 @implementation SuperSqlite
+
+@synthesize bridge = _bridge;
+
 RCT_EXPORT_MODULE()
 
 + (BOOL)requiresMainQueueSetup {
@@ -31,20 +34,5 @@ RCT_EXPORT_MODULE()
 - (void)invalidate {
     cleanUpSequel();
 }
-
-// Don't compile this code when we build for the old architecture.
-#ifdef RCT_NEW_ARCH_ENABLED
-- (NSNumber *)multiply:(double)a b:(double)b {
-    NSNumber *result = @(supersqlite::multiply(a, b));
-
-    return result;
-}
-
-- (std::shared_ptr<facebook::react::TurboModule>)getTurboModule:
-    (const facebook::react::ObjCTurboModule::InitParams &)params
-{
-    return std::make_shared<facebook::react::NativeSuperSqliteSpecJSI>(params);
-}
-#endif
 
 @end
