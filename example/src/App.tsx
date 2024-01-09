@@ -1,14 +1,11 @@
 import * as React from 'react';
-
 import { StyleSheet, View, Text } from 'react-native';
-import { multiply } from 'react-native-super-sqlite';
-
-const result = multiply(3, 7);
 
 export default function App() {
+  console.log(global.jsiMultiplication as any);
   return (
     <View style={styles.container}>
-      <Text>Result: {result}</Text>
+      <Text>Result: 444</Text>
     </View>
   );
 }
